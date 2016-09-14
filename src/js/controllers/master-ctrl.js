@@ -10,7 +10,7 @@ function MasterCtrl($scope, $rootScope, $cookieStore, $state) {
      * Sidebar Toggle & Cookie Control
      */
     var mobileView = 992;
-  
+
     $rootScope.title = "Home";
     $rootScope.route = "Home";
 
@@ -40,14 +40,9 @@ function MasterCtrl($scope, $rootScope, $cookieStore, $state) {
         $scope.$apply();
     };
 
-    $rootScope.checkPermisos = function(perfil){
-        if($rootScope.session.user.perfil.name == 'admin'){
-          return true;
-        }
-        return $rootScope.session.user.perfil.name == perfil;
-    }
     $rootScope.$on('httpError',function(event,eventData){
-       $state.go("login");
+      console.log(eventData);
+      //$state.go("login");
     });
 
 }

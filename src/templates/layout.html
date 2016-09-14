@@ -10,16 +10,16 @@
         </a>
       </li>
       <li class="sidebar-title"><span>NAVIGATION</span></li>
-      <li class="sidebar-list" ng-show="checkPermisos('admin')">
+      <li class="sidebar-list" >
         <a href="#/users">Usuarios <span class="menu-icon fa fa-users"></span></a>
       </li>
-      <li class="sidebar-list" ng-show="checkPermisos('admin')">
+      <li class="sidebar-list" >
         <a href="#/talleres">Talleres <span class="menu-icon fa fa-car"></span></a>
       </li>
-      <li class="sidebar-list" ng-show="checkPermisos('cliente')">
+      <li class="sidebar-list" >
         <a href="#/solicitudesDeServicio">S. De Servicio <span class="menu-icon fa fa-car"></span></a>
       </li>
-      <li class="sidebar-list" ng-show="checkPermisos('taller')">
+      <li class="sidebar-list" >
         <a href="#/solicitudesDeCotizacion">S. De Cotizacion <span class="menu-icon fa fa-car"></span></a>
       </li>
     </ul>
@@ -52,11 +52,11 @@
           <div class="user pull-right">
             <div class="item dropdown" uib-dropdown>
               <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
-                <img src="img/avatar.jpg">
+                <img src="{{session.avatar}}">
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li class="dropdown-header">
-                  {{session.user.nick_name}} - {{session.user.perfil.name}}
+                  {{session.name}}
                 </li>
                 <li class="divider"></li>
                 <li class="link">

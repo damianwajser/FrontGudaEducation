@@ -1,22 +1,24 @@
 angular.module('RDash')
-    .controller('LoginCtrl', ['$scope','$rootScope','$state',"$window","$location", 'SecurityService',
+    .controller('LoginCtrl', ['$scope','$rootScope','$state',"$window","$location","$http", 'SecurityService',
     LoginCtrl]);
 
-function LoginCtrl($scope, $rootScope ,$state, $window, $location,SecurityService) {
-
+function LoginCtrl($scope, $rootScope ,$state, $window, $location, $http, SecurityService) {
+    $scope.loginButton = true;
     function init(){
 
       var code = window.location.search.replace("?code=","");
       console.log(code);
       if(code){
+        $scope.loginButton = false;
         SecurityService.login(code).then(function(result){
-            console.log(result);
             $rootScope.session = result;
             $http.defaults.headers.common.Authorization = result.token;
-            $state.go("base.newSolicitudesDeCotizacion");
+            console.log(result);
+            console.log("log ok");
+            $state.go("base.tecnologias");
         }, function(err){
+          $scope.loginButton = true;
           console.log(err);
-          debugger;
         });
       }
     };
