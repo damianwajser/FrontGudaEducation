@@ -10,7 +10,7 @@ function MasterCtrl($scope, $rootScope, $cookieStore, $state) {
      * Sidebar Toggle & Cookie Control
      */
     var mobileView = 992;
-
+  
     $rootScope.title = "Home";
     $rootScope.route = "Home";
 
@@ -48,5 +48,6 @@ function MasterCtrl($scope, $rootScope, $cookieStore, $state) {
     }
     $rootScope.$on('httpError',function(event,eventData){
        $state.go("login");
-   });
+    });
+
 }

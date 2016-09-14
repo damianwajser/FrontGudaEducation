@@ -1,22 +1,32 @@
 angular.module('RDash')
-    .controller('LoginCtrl', ['$scope','$rootScope','$state', '$http', 'SecurityService',
+    .controller('LoginCtrl', ['$scope','$rootScope','$state',"$window","$location", 'SecurityService',
     LoginCtrl]);
 
-function LoginCtrl($scope, $rootScope ,$state, $http, SecurityService) {
-    $scope.user = {};
+function LoginCtrl($scope, $rootScope ,$state, $window, $location,SecurityService) {
 
-    $scope.sigin = function(){
-      SecurityService.login($scope.user).then(function(result){
-          $rootScope.session = result;
-          $http.defaults.headers.common.Authorization = result.token;
-          SecurityService.getPerfil(result.user[0].perfil[0]).then(function(perfil){
-            $rootScope.session.user = result.user[0];
-            $rootScope.session.user.perfil = perfil;
-            console.log("session");
-            console.log($rootScope.session);
-            console.log(perfil);
-            $state.go("base");
-          });
+    function init(){
+
+      var code = window.location.search.replace("?code=","");
+      console.log(code);
+      if(code){
+        SecurityService.login(code).then(function(result){
+            console.log(result);
+            $rootScope.session = result;
+            $http.defaults.headers.common.Authorization = result.token;
+            $state.go("base.newSolicitudesDeCotizacion");
+        }, function(err){
+          console.log(err);
+          debugger;
+        });
+      }
+    };
+
+
+    $scope.redirect = function(){
+      SecurityService.getUrl().then(function(result){
+        console.log(result);
+        $window.location.href = result;
       });
-    }
-    }
+    };
+    init();
+}
