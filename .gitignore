@@ -43,6 +43,8 @@ Icon
 
 # Node modules
 
+/node_modules
+/bower_components
 # Bower components
 /src/components
 
