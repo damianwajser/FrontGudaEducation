@@ -42,7 +42,7 @@ function MasterCtrl($scope, $rootScope, $cookieStore, $state) {
 
     $rootScope.$on('httpError',function(event,eventData){
       console.log(eventData);
-      //$state.go("login");
+      $state.go("login");
     });
 
 }

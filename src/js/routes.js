@@ -29,5 +29,11 @@ angular.module('RDash').config(['$stateProvider', '$urlRouterProvider',
                 controller:'TecnologiasController',
                 templateUrl: 'templates/Tecnologias/Tecnologias.html'
             })
+            .state('base.tecnologiasNivel', {
+                url: '/tecnologiasNivel',
+                params:{'tecno':''},        
+                controller:'TecnologiasNivelController',
+                templateUrl: 'templates/Tecnologias/TecnologiasNivel.html'
+            })
     }
 ]);

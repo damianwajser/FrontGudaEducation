@@ -4,7 +4,7 @@
         Que desafio queres realizar?
       <rd-widget-body>
         <div class="row">
-          <div class="col-md-4" ng-repeat="t in tecnologias">
+          <div class="col-md-4" ng-repeat="t in tecnologias"  ng-click="elegirNivel(t)">
             <img src="{{t.img}}">
           </div>
         </div>
